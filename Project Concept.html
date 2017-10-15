@@ -22,19 +22,20 @@
           has caused a lot of troubles for buyers. Our project will build a
           website dedicated to monitoring the prices of mainstream cryptocurrencies
           such as Bitcoin and Ethereum. Users can choose one or multiple
-          cryptocurrencies and the website will display their price in real-time.
-          Users can also sign up emails so that they would get notified if the
-          price of a cryptocurrency crosses a threshold they set.
+          cryptocurrencies and the website will display their price in real-time. 
+          We will use graphs to help visualize the displayed data and the graphs will update in real-time as well.
+          Users can also sign up for emails so that they can get notified if the
+          price of a cryptocurrency crosses a threshold that they have set.
         </p>
 
         <h3>API/Dataset</h3>
         <p>
-          Text
+          We will use Coinbase as our public API to gather cryptocurrency prices (https://developers.coinbase.com/)
         </p>
 
         <h3>Data to be pushed to client</h3>
         <p>
-          Text
+          Our server will continuously poll our crypto API and when it detects a change in price in any of the currencies we support, it will broadcast this price change via websockets to all clients who subscribed for updates for that particular currency.
         </p>
       </div>
     </div>
