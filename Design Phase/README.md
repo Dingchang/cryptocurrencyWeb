@@ -20,13 +20,13 @@ Our cryptocurrency monitoring website is a web-app dedicated to monitoring the p
 
 ## Data Design
 
-Overview - We will be using postgres as our data store. The main things we need to track are currencies, users and subscribed notifications. All of our data will be either created by users or manually seeded by us.
+Overview - We will be using Postgres as our data store. The main things we need to track are currencies, users and subscribed notifications. All of our data will be either created by users or manually seeded by us.
 
 ### Currency
 - id (int)
 - name (string)
 
-The Currency resource keeps track of what currencies we currently track. It is mainly used as a foreign key reference in Notification (the resource that keeps track of subscribed notifications - see below). There is no need to store the prices since we will retrieve them from the API in realtime. This table's data will likely be manually seeded since it will just be 3 records for each of our currecnies - Bitcoin, Ethereum and Litecoin.
+The Currency resource keeps track of what currencies we currently track. It is mainly used as a foreign key reference in Notification (the resource that keeps track of subscribed notifications - see below). There is no need to store the prices since we will retrieve them from the API in realtime. This table's data will likely be manually seeded since it will just be 3 records for each of our currencies - Bitcoin, Ethereum, and Litecoin.
 
 ### Notification
 - user_id (foreign key to the User table)
@@ -34,7 +34,7 @@ The Currency resource keeps track of what currencies we currently track. It is m
 - threshold_price (int)
 - above? (boolean)
 
-The Notification resource allows us to let users subscribe for email notifications for when a currency of their choice passes above or below a certain threshold. It stores the user id for who we should email and the currency id that we are tracking. It also keeps track of the 'above?' flag which tells us if the notification should be triggered when the price goes above the threshold or below.  We will have a background task that periodically polls the Coinbase API and checks through our Notification records to see if any notification threshold has been met - if it has, then we send the email to that user and then delete the record so that we dont re-notify later. For example, if the threshold is set to trigger once the price surpasses $3000 and we are tracking BTC, once BTC goes above 3000 - a email will be sent to the user saying "Notification triggered! The price of BTC has gone above $3000".
+The Notification resource allows us to let users subscribe for email notifications for when a currency of their choice passes above or below a certain threshold. It stores the user id for who we should email and the currency id that we are tracking. It also keeps track of the 'above?' flag which tells us if the notification should be triggered when the price goes above the threshold or below.  We will have a background task that periodically polls the Coinbase API and checks through our Notification records to see if any notification threshold has been met - if it has, then we send the email to that user and then delete the record so that we don't re-notify later. For example, if the threshold is set to trigger once the price surpasses $3000 and we are tracking BTC, once BTC goes above 3000 - a email will be sent to the user saying "Notification triggered! The price of BTC has gone above $3000".
 
 ### User
 - email (string)
@@ -51,7 +51,7 @@ Most interactions in our app would take place on the main page. By default, the 
 We will be using the Coinbase API to get price data for each of the cryptocurrencies that we will be tracking. This experiment demonstrates getting the current price of each of the currencies we support - as well as getting the price data for the last 7 days for each one. This happens in an elixir script and it just prints the price data (after extracting it from the payload).
 
 ### Running automatic background scheduled tasks
-This experiment demonstrates our understanding of the Quantum elixir library (https://hexdocs.pm/quantum). We will be using Quantum to schedule an automatic task that polls the Coinbase API every 5 (?) minutes so that we may send any email notifications if we need to. It is important that this happens in a background task independent of serving web requests since we want to send notifications even when users are not sending us requests at that particular moment.
+This experiment demonstrates our understanding of the [Quantum elixir library](https://hexdocs.pm/quantum). We will be using Quantum to schedule an automatic task that polls the Coinbase API every 5 (?) minutes so that we may send any email notifications if we need to. It is important that this happens in a background task independent of serving web requests since we want to send notifications even when users are not sending us requests at that particular moment.
 
 The experiment just shows that we can schedule some task to be executed every 1 second. Currently, it just prints to stdout when the task runs.
 
@@ -63,7 +63,7 @@ Sending email notifications is a key part of our cryptocurrency monitoring websi
 
 We have sat down and thought through the flow of our entire application. We have drawn out what each of our aforementioned views looks like and what the intended flow for a normal user or visitor should be. Based on this, we thought of 3 experiments that highlight the toughest/most unfamiliar parts of the application. We feel fairly confident that we are on track to finish the project.
 
-As of now, we just have a plain phoenix application that will be the starting point for our project. We will likely be able to re-use a lot of the code we wrote in our experiments since it is directly useful in our real application. 
+As of now, we just have a plain phoenix application that will be the starting point for our project. We will likely be able to re-use a lot of the code we wrote in our experiments since it is directly useful in our real application.
 
-Thankfully, we have not run into any significant issues so far. The only hiccup is that we need users to verify their email with our email sending API (MailGun) in order for notifications to work. To get around this easily, we will just make users verify via MailGun when they register for an account. 
-Also, intially we were planning on storing the cryptocurrency price data ourselves but we realized that it was redundant since it would be simpler to just poll the Coinbase API in realtime.
+Thankfully, we have not run into any significant issues so far. The only hiccup is that we need users to verify their email with our email sending API (MailGun) in order for notifications to work. To get around this easily, we will just make users verify via MailGun when they register for an account.
+Also, initially we were planning on storing the cryptocurrency price data ourselves but we realized that it was redundant since it would be simpler to just poll the Coinbase API in realtime.
