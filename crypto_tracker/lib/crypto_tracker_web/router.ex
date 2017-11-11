@@ -1,5 +1,6 @@
 defmodule CryptoTrackerWeb.Router do
   use CryptoTrackerWeb, :router
+  import CryptoTrackerWeb.Plugs
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -7,6 +8,7 @@ defmodule CryptoTrackerWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_user
   end
 
   pipeline :api do
@@ -16,8 +18,12 @@ defmodule CryptoTrackerWeb.Router do
   scope "/", CryptoTrackerWeb do
     pipe_through :browser # Use the default browser stack
 
-#    get "/", PageController, :index
-    resources "/", CurrencyController
+    get "/", PageController, :index
+    #resources "/", CurrencyController
+    resources "/currencies", CurrencyController
+    resources "/users", UserController
+    post "/sessions", SessionController, :login
+    delete "/sessions", SessionController, :logout
   end
 
   # Other scopes may use custom stacks.

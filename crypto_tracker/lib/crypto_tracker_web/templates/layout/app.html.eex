@@ -15,9 +15,20 @@
     <div class="container">
       <header class="header">
         <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
+            <ul class="nav nav-pills pull-right">
+              <%= if @current_user do %>
+                <span class="text-light">
+                  <%= @current_user.email %> |
+                  <%= link("logout", to: session_path(@conn, :logout), method: :delete) %>
+                </span>
+              <% else %>
+                <%= form_for @conn, session_path(@conn, :login), [as: "user", class: "form-inline w-75"], fn f -> %>
+                  <%= text_input f, :email,  placeholder: "email", class: "form-control" %>
+                  <input type="password" placeholder="password" class="form-control" name="password">
+                  <%= submit "Log in", class: "btn btn-primary" %>
+                <% end %>
+              <% end %>
+            </ul>
         </nav>
         <span class="logo"></span>
       </header>
