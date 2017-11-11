@@ -1,0 +1,5 @@
+<h2>Edit Currency</h2>
+
+<%= render "form.html", Map.put(assigns, :action, currency_path(@conn, :update, @currency)) %>
+
+<span><%= link "Back", to: currency_path(@conn, :index) %></span>

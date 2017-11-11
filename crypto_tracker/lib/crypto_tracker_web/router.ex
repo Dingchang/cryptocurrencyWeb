@@ -16,11 +16,13 @@ defmodule CryptoTrackerWeb.Router do
   scope "/", CryptoTrackerWeb do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+#    get "/", PageController, :index
+    resources "/", CurrencyController
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", CryptoTrackerWeb do
-  #   pipe_through :api
-  # end
+   scope "/api", CryptoTrackerWeb do
+     pipe_through :api
+     get "/prices", PriceController, :index
+   end
 end
