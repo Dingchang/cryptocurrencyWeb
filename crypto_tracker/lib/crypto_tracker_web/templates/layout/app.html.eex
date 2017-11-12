@@ -26,6 +26,7 @@
                   <%= text_input f, :email,  placeholder: "email", class: "form-control" %>
                   <input type="password" placeholder="password" class="form-control" name="password">
                   <%= submit "Log in", class: "btn btn-primary" %>
+<%= link("Register", to: user_path(@conn, :new)) %>
                 <% end %>
               <% end %>
             </ul>
