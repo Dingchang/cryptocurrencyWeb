@@ -12,6 +12,7 @@ defmodule CryptoTracker.Application do
       supervisor(CryptoTracker.Repo, []),
       # Start the endpoint when the application starts
       supervisor(CryptoTrackerWeb.Endpoint, []),
+      {CryptoTracker.Scheduler, []}
       # Start your own worker by calling: CryptoTracker.Worker.start_link(arg1, arg2, arg3)
       # worker(CryptoTracker.Worker, [arg1, arg2, arg3]),
     ]

@@ -5,6 +5,11 @@
 # is restricted to this project.
 use Mix.Config
 
+config :crypto_tracker, CryptoTracker.Scheduler,
+  jobs: [
+	{"@minutely", {CryptoTracker.PriceUpdatesTask, :run, []}}
+  ]
+
 # General application configuration
 config :crypto_tracker,
   ecto_repos: [CryptoTracker.Repo]

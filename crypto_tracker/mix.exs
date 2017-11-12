@@ -43,7 +43,9 @@ defmodule CryptoTracker.Mixfile do
       {:cowboy, "~> 1.0"},
     {:comeonin, "~> 4.0"},
     {:argon2_elixir, "~> 1.2"},
-      {:httpoison, "~> 0.13"}, {:poison, "~> 3.1"}
+      {:httpoison, "~> 0.13"}, {:poison, "~> 3.1"},
+{:quantum, ">= 2.1.3"},
+   {:timex, "~> 3.0"}
     ]
   end
 

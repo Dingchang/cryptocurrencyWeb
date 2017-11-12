@@ -3,6 +3,9 @@ defmodule CryptoTrackerWeb.UserSocket do
 
   ## Channels
   # channel "room:*", CryptoTrackerWeb.RoomChannel
+  channel "prices:btc", CryptoTrackerWeb.PricesChannel
+  channel "prices:ltc", CryptoTrackerWeb.PricesChannel
+channel "prices:eth", CryptoTrackerWeb.PricesChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
