@@ -7,7 +7,8 @@ use Mix.Config
 
 config :crypto_tracker, CryptoTracker.Scheduler,
   jobs: [
-	{"@minutely", {CryptoTracker.PriceUpdatesTask, :run, []}}
+	{"@minutely", {CryptoTracker.PriceUpdatesTask, :run, []}},
+        {"@minutely", {CryptoTracker.SendNotificationsTask, :run, []}}
   ]
 
 # General application configuration

@@ -124,4 +124,68 @@ defmodule CryptoTracker.TrackTest do
       assert %Ecto.Changeset{} = Track.change_price(price)
     end
   end
+
+  describe "notifications" do
+    alias CryptoTracker.Track.Notification
+
+    @valid_attrs %{above: true, currency: "some currency", threshold: "120.5"}
+    @update_attrs %{above: false, currency: "some updated currency", threshold: "456.7"}
+    @invalid_attrs %{above: nil, currency: nil, threshold: nil}
+
+    def notification_fixture(attrs \\ %{}) do
+      {:ok, notification} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Track.create_notification()
+
+      notification
+    end
+
+    test "list_notifications/0 returns all notifications" do
+      notification = notification_fixture()
+      assert Track.list_notifications() == [notification]
+    end
+
+    test "get_notification!/1 returns the notification with given id" do
+      notification = notification_fixture()
+      assert Track.get_notification!(notification.id) == notification
+    end
+
+    test "create_notification/1 with valid data creates a notification" do
+      assert {:ok, %Notification{} = notification} = Track.create_notification(@valid_attrs)
+      assert notification.above == true
+      assert notification.currency == "some currency"
+      assert notification.threshold == Decimal.new("120.5")
+    end
+
+    test "create_notification/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Track.create_notification(@invalid_attrs)
+    end
+
+    test "update_notification/2 with valid data updates the notification" do
+      notification = notification_fixture()
+      assert {:ok, notification} = Track.update_notification(notification, @update_attrs)
+      assert %Notification{} = notification
+      assert notification.above == false
+      assert notification.currency == "some updated currency"
+      assert notification.threshold == Decimal.new("456.7")
+    end
+
+    test "update_notification/2 with invalid data returns error changeset" do
+      notification = notification_fixture()
+      assert {:error, %Ecto.Changeset{}} = Track.update_notification(notification, @invalid_attrs)
+      assert notification == Track.get_notification!(notification.id)
+    end
+
+    test "delete_notification/1 deletes the notification" do
+      notification = notification_fixture()
+      assert {:ok, %Notification{}} = Track.delete_notification(notification)
+      assert_raise Ecto.NoResultsError, fn -> Track.get_notification!(notification.id) end
+    end
+
+    test "change_notification/1 returns a notification changeset" do
+      notification = notification_fixture()
+      assert %Ecto.Changeset{} = Track.change_notification(notification)
+    end
+  end
 end

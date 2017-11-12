@@ -22,6 +22,7 @@ defmodule CryptoTrackerWeb.Router do
     #resources "/", CurrencyController
     resources "/currencies", CurrencyController
     resources "/users", UserController
+    resources "/notifications", NotificationController
     post "/sessions", SessionController, :login
     delete "/sessions", SessionController, :logout
   end
