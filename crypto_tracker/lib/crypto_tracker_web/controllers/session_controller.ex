@@ -12,7 +12,7 @@ defmodule CryptoTrackerWeb.SessionController do
   end
 
   def login(conn, user_obj) do
-    user = get_and_auth_user(user_obj["user"]["email"], user_obj["password"])
+    user = get_and_auth_user(user_obj["email"], user_obj["password"])
 
     if user do
       conn
