@@ -12,39 +12,51 @@
   </head>
 
   <body>
-    <nav role="navigation">
-        <ul class="nav nav-pills pull-right">
-          <%= if @current_user do %>
-            <span class="text-light">
-              <%= @current_user.email %> |
-              <%= link("logout", to: session_path(@conn, :logout), method: :delete) %>
-            </span>
-          <% else %>
-            <%= form_for @conn, session_path(@conn, :login), [as: "user", class: "form-inline w-75"], fn f -> %>
-              <%= text_input f, :email,  placeholder: "email", class: "form-control" %>
-              <input type="password" placeholder="password" class="form-control" name="password">
-              <%= submit "Log in", class: "btn btn-primary" %>
-              <%= link("Sign up", to: user_path(@conn, :new)) %>
-            <% end %>
-          <% end %>
-        </ul>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-md" role="navigation">
+      <%= link "CryptoTracker", to: currency_path(@conn, :index), class: "navbar-brand" %>
+
+      <div class="collapse navbar-collapse" id="main-navbar">
+      </div>
+
+      <%= if @current_user do %>
+        <span class="text-light">
+          <%= @current_user.email %> |
+          <%= link("logout", to: session_path(@conn, :logout), method: :delete) %>
+        </span>
+      <% else %>
+        <%= form_for @conn, session_path(@conn, :login),
+              [as: "user", class: "form-inline w-100"], fn f -> %>
+          <div class="input-group">
+            <input type="text" placeholder="email"
+                               class="form-control" name="email">
+            <input type="password" placeholder="password"
+                               class="form-control" name="password">
+            <input type="submit" value="Log in" class="btn btn-primary">
+            <%= link "Sign Up", to: user_path(@conn, :new), class: "nav-link" %>
+          </div>
+        <% end %>
+      <% end %>
     </nav>
-    
+
     <div class="container">
-      <header class="header">
+      <div class="row">
+        <div class="col-sm-12 my-2">
+          <%= if get_flash(@conn, :info) do %>
+            <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+          <% end %>
+          <%= if get_flash(@conn, :error) do %>
+            <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+          <% end %>
+        </div>
 
-        <span class="logo"></span>
-      </header>
-
-
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
-
+        <div class="col-sm-12 my-2">
+          <main role="main">
+            <%= render @view_module, @view_template, assigns %>
+          </main>
+        </div>
+      </div>
     </div>
+
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
