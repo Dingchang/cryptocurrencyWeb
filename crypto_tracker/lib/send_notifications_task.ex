@@ -16,7 +16,6 @@ defmodule CryptoTracker.SendNotificationsTask do
       user_id = notif.user_id;
       above_threshold = Decimal.to_integer(Decimal.compare(Decimal.new(curr_price), notif.threshold)) == 1
 
-
       cond do
         (notif.above and above_threshold) ->
           IO.puts("Here, we should be sending an email to user_id #{user_id} because #{currency}'s price: #{curr_price} has gone above #{threshold}")
@@ -25,6 +24,8 @@ defmodule CryptoTracker.SendNotificationsTask do
         (not notif.above and not above_threshold) ->
           IO.puts("Here, we should be sending an email to user_id #{user_id} because #{currency}'s price: #{curr_price} has gone below #{threshold}")
           CryptoTracker.Track.delete_notification(notif)
+        
+        true -> nil
       end
 
       process_notifs(more)
