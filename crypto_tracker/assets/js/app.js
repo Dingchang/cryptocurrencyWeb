@@ -129,32 +129,112 @@ function draw_prices(currency) {
 
           // use chart.js to draw the actual chart
           var ctx = document.getElementById(currency + 'Chart').getContext('2d');
-          chart = new Chart(ctx, {
-              // The type of chart we want to create
-              type: 'line',
-
-              // The data for our dataset
-              data: {
-                  labels: dates,
-                  datasets: [{
-                      label: currency + " Price Chart",
-                      backgroundColor: 'rgb(255, 99, 132)',
-                      borderColor: 'rgb(255, 99, 132)',
-                      data: prices,
-                  }]
-              },
-
-              // Configuration options go here
-              options: {}
-          });
 
           if (currency == "BTC") {
+            chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+
+                // The data for our dataset
+                data: {
+                    labels: dates,
+                    datasets: [{
+                        label: "Bitcoin Price",
+                        backgroundColor: 'rgb(254, 236, 200)',
+                        borderColor: 'rgb(253, 187, 80)',
+                        data: prices,
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                  tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                  },
+                  scales: {
+                    xAxes: [{
+                      gridLines: {
+                        display: false
+                      }
+                    }],
+                    yAxes: [{
+                      gridLines: {
+                        display: false
+                      }
+                    }]
+                  }
+                }
+            });
+
             btc_chart = chart;
           }
           if (currency == "LTC") {
+            chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+
+                // The data for our dataset
+                data: {
+                    labels: dates,
+                    datasets: [{
+                        label: "Litecoin Price",
+                        backgroundColor: 'rgb(193, 163, 160)',
+                        borderColor: 'rgb(162, 117, 112)',
+                        data: prices,
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                  tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                  },
+                  scales: {
+                    yAxes: [{
+                      gridLines: {
+                        display: false
+                      }
+                    }]
+                  }
+                }
+            });
+
             ltc_chart = chart;
           }
           if (currency == "ETH") {
+            chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+
+                // The data for our dataset
+                data: {
+                    labels: dates,
+                    datasets: [{
+                        label: "Ethereum Price",
+                        backgroundColor: 'rgb(228, 231, 242)',
+                        borderColor: 'rgb(111, 125, 184)',
+                        data: prices,
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                  tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                  },
+                  scales: {
+                    xAxes: [{
+                      gridLines: {
+                        display: false
+                      }
+                    }]
+                  }
+                }
+            });
+
             eth_chart = chart;
           }
         }
