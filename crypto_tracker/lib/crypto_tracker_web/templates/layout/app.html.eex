@@ -58,7 +58,6 @@
       </div>
     </div>
 
-    <script src="<%= static_path(@conn, "/node_modules/jquery/dist/jquery.min.js") %>"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
