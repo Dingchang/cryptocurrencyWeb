@@ -3,6 +3,7 @@ defmodule CryptoTrackerWeb.CurrencyController do
 
   alias CryptoTracker.Track
   alias CryptoTracker.Track.Currency
+  alias CryptoTracker.Track.Notification
 
   def index(conn, _params) do
     currencies = Track.list_currencies()
@@ -17,7 +18,9 @@ defmodule CryptoTrackerWeb.CurrencyController do
       eth_notifs = Track.get_notifs_for_user_currency(curr_user.id, "ETH")
     end
 
-    render(conn, "index.html", currencies: currencies, btc_notifs: btc_notifs, eth_notifs: eth_notifs, ltc_notifs: ltc_notifs)
+    changeset = Track.change_notification(%Notification{})
+
+    render(conn, "index.html", currencies: currencies, changeset: changeset, btc_notifs: btc_notifs, eth_notifs: eth_notifs, ltc_notifs: ltc_notifs)
   end
 
   def get_curr_price(currency) do

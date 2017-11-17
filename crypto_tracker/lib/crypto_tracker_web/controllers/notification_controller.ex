@@ -23,7 +23,7 @@ defmodule CryptoTrackerWeb.NotificationController do
       {:ok, notification} ->
         conn
         |> put_flash(:info, "Notification created successfully.")
-        |> redirect(to: notification_path(conn, :show, notification))
+        |> redirect(to: currency_path(conn, :index))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end

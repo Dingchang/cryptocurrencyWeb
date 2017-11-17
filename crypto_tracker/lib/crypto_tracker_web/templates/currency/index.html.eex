@@ -40,11 +40,7 @@
           <% end %>
 
           <li class="list-group-item">
-            <div class="input-group">
-              <input type="text" placeholder="threshold"
-                                 class="form-control" name="threshold">
-              <input type="submit" value="Create" class="btn btn-primary">
-            </div>
+            <%= render "btc_notif_form.html", Map.put(assigns, :action, notification_path(@conn, :create)) %>
           </li>
         </ul>
       </div>
@@ -83,11 +79,7 @@
             </li>
           <% end %>
           <li class="list-group-item">
-            <div class="input-group">
-              <input type="text" placeholder="threshold"
-                                 class="form-control" name="threshold">
-              <input type="submit" value="Create" class="btn btn-primary">
-            </div>
+            <%= render "eth_notif_form.html", Map.put(assigns, :action, notification_path(@conn, :create)) %>
           </li>
         </ul>
       </div>
@@ -125,11 +117,7 @@
             </li>
           <% end %>
           <li class="list-group-item">
-            <div class="input-group">
-              <input type="text" placeholder="threshold"
-                                 class="form-control" name="threshold">
-              <input type="submit" value="Create" class="btn btn-primary">
-            </div>
+            <%= render "ltc_notif_form.html", Map.put(assigns, :action, notification_path(@conn, :create)) %>
           </li>
         </ul>
       </div>
