@@ -31,3 +31,8 @@ config :logger, :console,
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
+
+
+# Configures Mailgun API
+config :crypto_tracker, mailgun_domain: "https://api.mailgun.net/v3/sandboxf1824ecaeede4b19b949ed15fce5f789.mailgun.org",
+                   mailgun_key: "key-a00aa38bda70cee37527688f8dcdcb8b"

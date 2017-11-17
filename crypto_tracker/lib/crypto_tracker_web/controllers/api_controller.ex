@@ -32,4 +32,25 @@ defmodule CryptoTrackerWeb.APIController do
   def get_last_30_days(currency) do
     get_last_30_days_helper(0, currency, [])
   end
+
+
+  def get_yearly_prices(conn, %{"currency" => currency}) do
+    json conn, Enum.reverse(get_last_365_days(currency))
+  end
+
+  def get_last_365_days(currency) do
+    get_last_365_days_helper(0, currency, [])
+  end
+
+  def get_last_365_days_helper(n, _, sofar) when n > 365 do
+    sofar
+  end
+
+  def get_last_365_days_helper(n, currency, sofar) do
+    today = Date.utc_today()
+    date = Date.to_string(Date.add(today, n * -1))
+    price = get_historical_price(currency, date);
+    {float_val, _} = Float.parse(price)
+    get_last_365_days_helper(n+5, currency, sofar ++ [%{date: date, price: float_val}])
+  end
 end

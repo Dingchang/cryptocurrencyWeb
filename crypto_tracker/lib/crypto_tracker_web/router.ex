@@ -31,5 +31,6 @@ defmodule CryptoTrackerWeb.Router do
    scope "/api", CryptoTrackerWeb do
      pipe_through :api
      get "/prices", APIController, :get_prices
+get "/prices_yearly", APIController, :get_yearly_prices
    end
 end

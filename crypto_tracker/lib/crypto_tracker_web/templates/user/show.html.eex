@@ -7,7 +7,35 @@
     <%= @user.email %>
   </li>
 
+<h2>Listing Notifications</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Currency</th>
+      <th>Threshold</th>
+      <th>Above</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for notification <- @notifications do %>
+    <tr>
+      <td><%= notification.currency %></td>
+      <td><%= notification.threshold %></td>
+      <td><%= notification.above %></td>
+
+      <td class="text-right">
+        <span><%= link "Edit", to: notification_path(@conn, :edit, notification), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: notification_path(@conn, :delete, notification), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
 </ul>
 
-<span><%= link "Edit", to: user_path(@conn, :edit, @user) %></span>
-<span><%= link "Back", to: user_path(@conn, :index) %></span>
+<span><%= link "Edit Email", to: user_path(@conn, :edit, @user) %></span>
+<span><%= link "Back", to: currency_path(@conn, :index) %></span>

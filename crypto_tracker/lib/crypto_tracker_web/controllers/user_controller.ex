@@ -27,7 +27,8 @@ defmodule CryptoTrackerWeb.UserController do
 
   def show(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)
-    render(conn, "show.html", user: user)
+    notifs = CryptoTracker.Track.get_notifs_for_user(id)
+    render(conn, "show.html", user: user, notifications: notifs)
   end
 
   def edit(conn, %{"id" => id}) do
