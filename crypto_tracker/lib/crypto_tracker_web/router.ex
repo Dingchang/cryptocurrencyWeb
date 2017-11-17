@@ -30,6 +30,6 @@ defmodule CryptoTrackerWeb.Router do
   # Other scopes may use custom stacks.
    scope "/api", CryptoTrackerWeb do
      pipe_through :api
-     get "/prices", PriceController, :index
+     get "/prices", APIController, :get_prices
    end
 end

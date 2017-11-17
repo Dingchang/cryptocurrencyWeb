@@ -31,11 +31,14 @@
 
       <div id="btcNote" class="panel-collapse collapse">
         <ul class="list-group">
-          <li class="list-group-item">
-            Example Notification 1... <a href="#">Delete</a>
-            <br>
-            Example Notification 2... <a href="#">Delete</a>
-          </li>
+          <%= for notif <- @btc_notifs do %>
+            <li class="list-group-item">
+              Threshold: <%= notif.threshold %>
+              Above?: <%= notif.above %>
+              <span><%= link "Delete", to: notification_path(@conn, :delete, notif), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+            </li>
+          <% end %>
+
           <li class="list-group-item">
             <div class="input-group">
               <input type="text" placeholder="threshold"
@@ -72,11 +75,13 @@
 
       <div id="ethNote" class="panel-collapse collapse">
         <ul class="list-group">
-          <li class="list-group-item">
-            Example Notification 1... <a href="#">Delete</a>
-            <br>
-            Example Notification 2... <a href="#">Delete</a>
-          </li>
+          <%= for notif <- @eth_notifs do %>
+            <li class="list-group-item">
+              Threshold: <%= notif.threshold %>
+              Above?: <%= notif.above %>
+              <span><%= link "Delete", to: notification_path(@conn, :delete, notif), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+            </li>
+          <% end %>
           <li class="list-group-item">
             <div class="input-group">
               <input type="text" placeholder="threshold"
@@ -112,11 +117,13 @@
 
       <div id="ltcNote" class="panel-collapse collapse">
         <ul class="list-group">
-          <li class="list-group-item">
-            Example Notification 1... <a href="#">Delete</a>
-            <br>
-            Example Notification 2... <a href="#">Delete</a>
-          </li>
+          <%= for notif <- @ltc_notifs do %>
+            <li class="list-group-item">
+              Threshold: <%= notif.threshold %>
+              Above?: <%= notif.above %>
+              <span><%= link "Delete", to: notification_path(@conn, :delete, notif), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+            </li>
+          <% end %>
           <li class="list-group-item">
             <div class="input-group">
               <input type="text" placeholder="threshold"

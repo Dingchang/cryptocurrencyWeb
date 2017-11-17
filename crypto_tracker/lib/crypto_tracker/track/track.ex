@@ -118,6 +118,10 @@ defmodule CryptoTracker.Track do
     Repo.all(Notification)
   end
 
+  def get_notifs_for_user_currency(user_id, currency) do
+    Repo.all(from r in Notification, where: r.user_id == ^user_id and r.currency == ^currency)
+  end
+
   @doc """
   Gets a single notification.
 

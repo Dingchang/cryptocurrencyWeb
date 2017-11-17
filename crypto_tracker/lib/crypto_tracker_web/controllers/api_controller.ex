@@ -1,7 +1,7 @@
-defmodule CryptoTrackerWeb.PriceController do
+defmodule CryptoTrackerWeb.APIController do
   use CryptoTrackerWeb, :controller
 
-  def index(conn, %{"currency" => currency}) do
+  def get_prices(conn, %{"currency" => currency}) do
     json conn, Enum.reverse(get_last_30_days(currency))
   end
 

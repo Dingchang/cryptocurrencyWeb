@@ -6,8 +6,18 @@ defmodule CryptoTrackerWeb.CurrencyController do
 
   def index(conn, _params) do
     currencies = Track.list_currencies()
+    btc_notifs = []
+    ltc_notifs = []
+    eth_notifs = []
 
-    render(conn, "index.html", currencies: currencies)
+    curr_user = conn.assigns[:current_user]
+    if curr_user do
+      btc_notifs = Track.get_notifs_for_user_currency(curr_user.id, "BTC")
+      ltc_notifs = Track.get_notifs_for_user_currency(curr_user.id, "LTC")
+      eth_notifs = Track.get_notifs_for_user_currency(curr_user.id, "ETH")
+    end
+
+    render(conn, "index.html", currencies: currencies, btc_notifs: btc_notifs, eth_notifs: eth_notifs, ltc_notifs: ltc_notifs)
   end
 
   def get_curr_price(currency) do
