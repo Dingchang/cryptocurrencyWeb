@@ -9,41 +9,32 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
-<%= if @current_user do %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        Bitcoin Price Chart
-      </h4>
+<!-- BTC CHART -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      Bitcoin Price Chart
+    </h4>
+  </div>
+  <div class="panel-body">
+    <div class="tab-pane fade in active">
+      <canvas id="BTCChart"></canvas>
     </div>
-    <div class="panel-body">
-      <ul class="nav nav-tabs">
-        <li class="active">
-          <a data-toggle="tab" href="#1M">1M</a></li>
-        <li>
-          <a data-toggle="tab" href="#1Y">1Y</a></li>
-      </ul>
-
-      <div class="tab-content">
-        <div id="1M" class="tab-pane fade in active">
-          <canvas id="BTCChart"></canvas>
-        </div>
-        <div id="1Y" class="tab-pane fade">
-          <p>1y
-        </div>
-      </div>
-    </div>
+  </div>
+  <%= if @current_user do %>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
           <a data-toggle="collapse" href="#btcNote">Notifications</a>
         </h4>
       </div>
+
       <div id="btcNote" class="panel-collapse collapse">
         <ul class="list-group">
           <li class="list-group-item">
-            One
-            <a href="#">Delete</a>
+            Example Notification 1... <a href="#">Delete</a>
+            <br>
+            Example Notification 2... <a href="#">Delete</a>
           </li>
           <li class="list-group-item">
             <div class="input-group">
@@ -53,45 +44,38 @@
             </div>
           </li>
         </ul>
-
       </div>
+    </div>
+  <% end %>
+</div>
+
+
+<!-- ETH CHART -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      Ethereum Price Chart
+    </h4>
+  </div>
+  <div class="panel-body">
+    <div class="tab-pane fade in active">
+      <canvas id="ETHChart"></canvas>
     </div>
   </div>
-
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        Bitcoin Price Chart
-      </h4>
-    </div>
-    <div class="panel-body">
-      <ul class="nav nav-tabs">
-        <li class="active">
-          <a data-toggle="tab" href="#1M">1M</a></li>
-        <li>
-          <a data-toggle="tab" href="#1Y">1Y</a></li>
-      </ul>
-
-      <div class="tab-content">
-        <div id="1M" class="tab-pane fade in active">
-          <canvas id="LTCChart"></canvas>
-        </div>
-        <div id="1Y" class="tab-pane fade">
-          <p>1y
-        </div>
-      </div>
-    </div>
+  <%= if @current_user do %>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" href="#btcNote">Notifications</a>
+          <a data-toggle="collapse" href="#ethNote">Notifications</a>
         </h4>
       </div>
-      <div id="btcNote" class="panel-collapse collapse">
+
+      <div id="ethNote" class="panel-collapse collapse">
         <ul class="list-group">
           <li class="list-group-item">
-            One
-            <a href="#">Delete</a>
+            Example Notification 1... <a href="#">Delete</a>
+            <br>
+            Example Notification 2... <a href="#">Delete</a>
           </li>
           <li class="list-group-item">
             <div class="input-group">
@@ -101,45 +85,37 @@
             </div>
           </li>
         </ul>
-
       </div>
+    </div>
+  <% end %>
+</div>
+
+<!-- LTC CHART -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      Litecoin Price Chart
+    </h4>
+  </div>
+  <div class="panel-body">
+    <div class="tab-pane fade in active">
+      <canvas id="LTCChart"></canvas>
     </div>
   </div>
-
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        Bitcoin Price Chart
-      </h4>
-    </div>
-    <div class="panel-body">
-      <ul class="nav nav-tabs">
-        <li class="active">
-          <a data-toggle="tab" href="#1M">1M</a></li>
-        <li>
-          <a data-toggle="tab" href="#1Y">1Y</a></li>
-      </ul>
-
-      <div class="tab-content">
-        <div id="1M" class="tab-pane fade in active">
-          <canvas id="ETHChart"></canvas>
-        </div>
-        <div id="1Y" class="tab-pane fade">
-          <p>1y
-        </div>
-      </div>
-    </div>
+  <%= if @current_user do %>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" href="#btcNote">Notifications</a>
+          <a data-toggle="collapse" href="#ltcNote">Notifications</a>
         </h4>
       </div>
-      <div id="btcNote" class="panel-collapse collapse">
+
+      <div id="ltcNote" class="panel-collapse collapse">
         <ul class="list-group">
           <li class="list-group-item">
-            One
-            <a href="#">Delete</a>
+            Example Notification 1... <a href="#">Delete</a>
+            <br>
+            Example Notification 2... <a href="#">Delete</a>
           </li>
           <li class="list-group-item">
             <div class="input-group">
@@ -149,35 +125,7 @@
             </div>
           </li>
         </ul>
-
       </div>
     </div>
-  </div>
-<% else %>
-<div class="panel panel-default">
-  <div class="panel-body">
-    <canvas id="BTCChart"></canvas>
-  </div>
-  <div class="panel-footer">
-    Footer
-  </div>
+  <% end %>
 </div>
-
-<div class="panel panel-default">
-  <div class="panel-body">
-    <canvas id="LTCChart"></canvas>
-  </div>
-  <div class="panel-footer">
-    Footer
-  </div>
-</div>
-
-<div class="panel panel-default">
-  <div class="panel-body">
-    <canvas id="ETHChart"></canvas>
-  </div>
-  <div class="panel-footer">
-    Footer
-  </div>
-</div>
-<% end %>
