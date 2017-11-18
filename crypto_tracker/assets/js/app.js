@@ -99,12 +99,17 @@ function update_eth_price(msg) {
 }
 
 function draw_all_prices() {
-    draw_prices("BTC");
-    draw_prices("ETH");
-    draw_prices("LTC");
+    draw_monthly_prices("BTC");
+    draw_monthly_prices("ETH");
+    draw_monthly_prices("LTC");
+
+    draw_yearly_prices("BTC");
+    draw_yearly_prices("ETH");
+    draw_yearly_prices("LTC");
 }
 
-function draw_prices(currency) {
+
+function draw_monthly_prices(currency) {
     // define GET request for API
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", "api/prices?currency=" + currency, true); // true for asynchronous request
@@ -115,7 +120,6 @@ function draw_prices(currency) {
     xmlHttp.onreadystatechange = function() {
       if (xmlHttp.readyState == 4) {
         if (xmlHttp.status == 200) {
-
           // parse out data into a list of prices and a list of dates so we can put them in the graph
           var prices_and_dates = JSON.parse(xmlHttp.responseText);
           var prices = [];
@@ -131,6 +135,8 @@ function draw_prices(currency) {
           var ctx = document.getElementById(currency + 'Chart').getContext('2d');
 
           if (currency == "BTC") {
+            document.getElementById('btcLoader').style.display = "none";
+            document.getElementById('BTCChart').style.display = "block";
             chart = new Chart(ctx, {
                 // The type of chart we want to create
                 type: 'line',
@@ -170,6 +176,8 @@ function draw_prices(currency) {
             btc_chart = chart;
           }
           if (currency == "LTC") {
+            document.getElementById('ltcLoader').style.display = "none";
+            document.getElementById('LTCChart').style.display = "block";
             chart = new Chart(ctx, {
                 // The type of chart we want to create
                 type: 'line',
@@ -204,6 +212,8 @@ function draw_prices(currency) {
             ltc_chart = chart;
           }
           if (currency == "ETH") {
+            document.getElementById('ethLoader').style.display = "none";
+            document.getElementById('ETHChart').style.display = "block";
             chart = new Chart(ctx, {
                 // The type of chart we want to create
                 type: 'line',
@@ -236,6 +246,150 @@ function draw_prices(currency) {
             });
 
             eth_chart = chart;
+          }
+        }
+      }
+    }
+
+    return chart;
+}
+
+
+
+
+
+
+
+// almost exact same function as above but for populating the yearly charts
+// definitely should abstract but too lazy 
+function draw_yearly_prices(currency) {
+    // define GET request for API
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "api/prices_yearly?currency=" + currency, true); // true for asynchronous request
+    xmlHttp.send( null );
+
+    // define callback for when api call completes
+    var chart;
+    xmlHttp.onreadystatechange = function() {
+      if (xmlHttp.readyState == 4) {
+        if (xmlHttp.status == 200) {
+          // parse out data into a list of prices and a list of dates so we can put them in the graph
+          var prices_and_dates = JSON.parse(xmlHttp.responseText);
+          var prices = [];
+          var dates = [];
+
+          var i;
+          for (i = 0; i < prices_and_dates.length; i++) {
+            prices.push(prices_and_dates[i].price);
+            dates.push(prices_and_dates[i].date);
+          }
+
+          // use chart.js to draw the actual chart
+          var ctx = document.getElementById(currency + 'Chart_yearly').getContext('2d');
+
+          if (currency == "BTC") {
+            document.getElementById('BTCChart_yearly').style.display = "block";
+            chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+
+                // The data for our dataset
+                data: {
+                    labels: dates,
+                    datasets: [{
+                        label: "Bitcoin Price",
+                        backgroundColor: 'rgb(254, 236, 200)',
+                        borderColor: 'rgb(253, 187, 80)',
+                        data: prices,
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                  tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                  },
+                  scales: {
+                    xAxes: [{
+                      gridLines: {
+                        display: false
+                      }
+                    }],
+                    yAxes: [{
+                      gridLines: {
+                        display: false
+                      }
+                    }]
+                  }
+                }
+            });
+          }
+          if (currency == "LTC") {
+            document.getElementById('LTCChart_yearly').style.display = "block";
+            chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+
+                // The data for our dataset
+                data: {
+                    labels: dates,
+                    datasets: [{
+                        label: "Litecoin Price",
+                        backgroundColor: 'rgb(193, 163, 160)',
+                        borderColor: 'rgb(162, 117, 112)',
+                        data: prices,
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                  tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                  },
+                  scales: {
+                    yAxes: [{
+                      gridLines: {
+                        display: false
+                      }
+                    }]
+                  }
+                }
+            });
+          }
+          if (currency == "ETH") {
+            document.getElementById('ETHChart_yearly').style.display = "block";
+            chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+
+                // The data for our dataset
+                data: {
+                    labels: dates,
+                    datasets: [{
+                        label: "Ethereum Price",
+                        backgroundColor: 'rgb(228, 231, 242)',
+                        borderColor: 'rgb(111, 125, 184)',
+                        data: prices,
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                  tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                  },
+                  scales: {
+                    xAxes: [{
+                      gridLines: {
+                        display: false
+                      }
+                    }]
+                  }
+                }
+            });
           }
         }
       }

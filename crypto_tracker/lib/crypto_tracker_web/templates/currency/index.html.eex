@@ -13,14 +13,21 @@
         <a class="nav-link active small" data-toggle="pill" href="#BTC-1M">1M</a>
       </li>
       <li class="nav-item mt-1">
-        <a class="nav-link disabled small" data-toggle="pill" href="#BTC-1Y">1Y</a>
+        <a class="nav-link small" data-toggle="pill" href="#BTC-1Y">1Y</a>
       </li>
     </ul>
   </div>
 
   <div class="tab-content">
     <div id="BTC-1M" class="card-body">
-      <canvas id="BTCChart"></canvas>
+      <canvas id="BTCChart" style="display:none"></canvas>
+      <div class="loader inner" id="btcLoader" align="center"></div>
+    </div>
+  </div>
+
+  <div class="tab-content">
+    <div id="BTC-1Y" class="card-body">
+      <canvas id="BTCChart_yearly" style="display:none"></canvas>
     </div>
   </div>
 
@@ -73,7 +80,14 @@
 
   <div class="tab-content">
     <div id="ETH-1M" class="card-body">
-      <canvas id="ETHChart"></canvas>
+      <canvas id="ETHChart" style="display:none"></canvas>
+      <div class="loader inner" id="ethLoader" align="center"></div>
+    </div>
+  </div>
+
+  <div class="tab-content">
+    <div id="ETH-1Y" class="card-body">
+      <canvas id="ETHChart_yearly" style="display:none"></canvas>
     </div>
   </div>
 
@@ -126,7 +140,14 @@
 
   <div class="tab-content">
     <div id="LTC-1M" class="card-body">
-      <canvas id="LTCChart"></canvas>
+      <canvas id="LTCChart" style="display:none"></canvas>
+      <div class="loader inner" id="ltcLoader" align="center"></div>
+    </div>
+  </div>
+
+  <div class="tab-content">
+    <div id="LTC-1Y" class="card-body">
+      <canvas id="LTCChart_yearly" style="display:none"></canvas>
     </div>
   </div>
 
