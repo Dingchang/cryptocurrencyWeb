@@ -21,7 +21,7 @@
 
     <label class="ml-sm-2" for="btc-price">$</label>
 
-    <div class="form-group ml-2" id="btc-price">
+    <div class="form-group ml-2 mr-auto" id="btc-price">
       <%= number_input f, :threshold, step: "any", class: "form-control input-normal" %>
       <%= error_tag f, :threshold %>
     </div>
