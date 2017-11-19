@@ -8,7 +8,7 @@
   <div class="form-inline">
 
     <div class="form-group hidden" type="hidden">
-      <%= text_input f, :currency, class: "form-control display:none", value: "LTC", type: "hidden" %>
+      <%= text_input f, :currency, class: "form-control display:none", value: "ETH", type: "hidden" %>
       <%= error_tag f, :currency %>
     </div>
 

@@ -122,7 +122,7 @@
 
     <div id="ethNote" class="collapse">
       <ul class="list-group">
-        <%= for notif <- @btc_notifs do %>
+        <%= for notif <- @eth_notifs do %>
           <%= if notif.above do %>
             <li class="list-group-item">
               <text class="mt-3">Send me email when the price goes <b>above $<%= notif.threshold %></b>.</text>
@@ -189,7 +189,7 @@
 
     <div id="ltcNote" class="collapse">
       <ul class="list-group">
-        <%= for notif <- @btc_notifs do %>
+        <%= for notif <- @ltc_notifs do %>
           <%= if notif.above do %>
             <li class="list-group-item">
               <text class="mt-3">Send me email when the price goes <b>above $<%= notif.threshold %></b>.</text>

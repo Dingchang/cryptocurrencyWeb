@@ -1,6 +1,7 @@
 defmodule CryptoTrackerWeb.UserController do
   use CryptoTrackerWeb, :controller
 
+  alias CryptoTracker.Track
   alias CryptoTracker.Accounts
   alias CryptoTracker.Accounts.User
 
@@ -27,8 +28,10 @@ defmodule CryptoTrackerWeb.UserController do
 
   def show(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)
-    notifs = CryptoTracker.Track.get_notifs_for_user(id)
-    render(conn, "show.html", user: user, notifications: notifs)
+    btc_notifs = Track.get_notifs_for_user_currency(id, "BTC")
+    ltc_notifs = Track.get_notifs_for_user_currency(id, "LTC")
+    eth_notifs = Track.get_notifs_for_user_currency(id, "ETH")
+    render(conn, "show.html", user: user, btc_notifications: btc_notifs, ltc_notifications: ltc_notifs, eth_notifications: eth_notifs)
   end
 
   def edit(conn, %{"id" => id}) do
