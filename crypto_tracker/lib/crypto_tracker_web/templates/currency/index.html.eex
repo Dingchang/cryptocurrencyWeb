@@ -58,13 +58,13 @@
         <%= for notif <- @btc_notifs do %>
           <%= if notif.above do %>
             <li class="list-group-item">
-              Send me email when the price goes <b>above $<%= notif.threshold %></b>.
-              <%= link "Delete", to: notification_path(@conn, :delete, notif), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs pull-right" %>
+              <text class="mt-3">Send me email when the price goes <b>above $<%= notif.threshold %></b>.</text>
+              <%= link "Delete", to: notification_path(@conn, :delete, notif), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-sm float-right" %>
             </li>
           <% else %>
             <li class="list-group-item">
-              Send me email when the price goes <b>below $<b><%= notif.threshold %></b>.
-              <%= link "Delete", to: notification_path(@conn, :delete, notif), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs pull-right" %>
+              <text class="mt-2">Send me email when the price goes <b>below $<%= notif.threshold %></b>.</text>
+              <%= link "Delete", to: notification_path(@conn, :delete, notif), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-sm float-right" %>
             </li>
           <% end %>
         <% end %>
@@ -210,4 +210,3 @@
     </div>
   <% end %>
 </div>
-

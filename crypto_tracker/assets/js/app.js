@@ -171,6 +171,11 @@ function draw_monthly_prices(currency) {
 
                 // Configuration options go here
                 options: {
+                  elements: {
+                    point: {
+                      radius: 0
+                    }
+                  },
                   tooltips: {
                     mode: 'index',
                     intersect: false,
@@ -212,11 +217,21 @@ function draw_monthly_prices(currency) {
 
                 // Configuration options go here
                 options: {
+                  elements: {
+                    point: {
+                      radius: 0
+                    }
+                  },
                   tooltips: {
                     mode: 'index',
                     intersect: false,
                   },
                   scales: {
+                    xAxes: [{
+                      gridLines: {
+                        display: false
+                      }
+                    }],
                     yAxes: [{
                       gridLines: {
                         display: false
@@ -248,12 +263,22 @@ function draw_monthly_prices(currency) {
 
                 // Configuration options go here
                 options: {
+                  elements: {
+                    point: {
+                      radius: 0
+                    }
+                  },
                   tooltips: {
                     mode: 'index',
                     intersect: false,
                   },
                   scales: {
                     xAxes: [{
+                      gridLines: {
+                        display: false
+                      }
+                    }],
+                    yAxes: [{
                       gridLines: {
                         display: false
                       }
@@ -271,14 +296,8 @@ function draw_monthly_prices(currency) {
     return chart;
 }
 
-
-
-
-
-
-
 // almost exact same function as above but for populating the yearly charts
-// definitely should abstract but too lazy 
+// definitely should abstract but too lazy
 function draw_yearly_prices(currency) {
     // define GET request for API
     var xmlHttp = new XMLHttpRequest();
@@ -323,6 +342,11 @@ function draw_yearly_prices(currency) {
 
                 // Configuration options go here
                 options: {
+                  elements: {
+                    point: {
+                      radius: 0
+                    }
+                  },
                   tooltips: {
                     mode: 'index',
                     intersect: false,
@@ -361,11 +385,21 @@ function draw_yearly_prices(currency) {
 
                 // Configuration options go here
                 options: {
+                  elements: {
+                    point: {
+                      radius: 0
+                    }
+                  },
                   tooltips: {
                     mode: 'index',
                     intersect: false,
                   },
                   scales: {
+                    xAxes: [{
+                      gridLines: {
+                        display: false
+                      }
+                    }],
                     yAxes: [{
                       gridLines: {
                         display: false
@@ -394,12 +428,22 @@ function draw_yearly_prices(currency) {
 
                 // Configuration options go here
                 options: {
+                  elements: {
+                    point: {
+                      radius: 0
+                    }
+                  },
                   tooltips: {
                     mode: 'index',
                     intersect: false,
                   },
                   scales: {
                     xAxes: [{
+                      gridLines: {
+                        display: false
+                      }
+                    }],
+                    yAxes: [{
                       gridLines: {
                         display: false
                       }

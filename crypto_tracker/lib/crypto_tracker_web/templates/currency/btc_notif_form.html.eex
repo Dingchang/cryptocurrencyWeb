@@ -12,22 +12,22 @@
       <%= error_tag f, :currency %>
     </div>
 
-    Send me email when the price goes &nbsp;
+    <label class="mr-sm-2" for="btc-select">Send me email when the price goes</label>
 
-    <div class="form-group">
-      <%= label f, :above, class: "control-label" %>
-      <%= checkbox f, :above, class: "checkbox" %>
+    <div class="form-group" id="btc-select">
+      <%= select f, :above, ["above": true, "below": false], class: "select" %>
       <%= error_tag f, :above %>
     </div>
 
-    <div class="form-group">
-      <%= label f, :threshold, class: "control-label" %>
-      <%= number_input f, :threshold, step: "any", class: "form-control" %>
+    <label class="ml-sm-2" for="btc-price">$</label>
+
+    <div class="form-group ml-2" id="btc-price">
+      <%= number_input f, :threshold, step: "any", class: "form-control input-normal" %>
       <%= error_tag f, :threshold %>
     </div>
 
-    <div class="form-group">
-      <%= submit "Create", class: "btn btn-primary mr-auto" %>
+    <div>
+      <%= submit "Create", class: "form-control btn btn-primary btn-sm" %>
     </div>
   </div>
 <% end %>
