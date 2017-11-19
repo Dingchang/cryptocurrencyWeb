@@ -8,7 +8,7 @@ defmodule CryptoTracker.SendNotificationsTask do
 
   def process_notifs(notifs) do
     if length(notifs) != 0 do
-      [notif | more] = CryptoTracker.Track.list_notifications()
+      [notif | more] = notifs
 
       currency = notif.currency
       curr_price = get_curr_price(currency)
