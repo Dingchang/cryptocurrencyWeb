@@ -9,6 +9,7 @@ defmodule CryptoTrackerWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :fetch_user
+    plug NavigationHistory.Tracker
   end
 
   pipeline :api do

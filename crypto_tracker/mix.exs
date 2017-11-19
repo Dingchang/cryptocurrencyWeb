@@ -41,13 +41,14 @@ defmodule CryptoTracker.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-    {:comeonin, "~> 4.0"},
-    {:argon2_elixir, "~> 1.2"},
+      {:comeonin, "~> 4.0"},
+      {:argon2_elixir, "~> 1.2"},
       {:httpoison, "~> 0.13"},
-{:quantum, ">= 2.1.3"},
-   {:timex, "~> 3.0"},
-    {:mailgun, "~> 0.1.2"},
-{:poison, "~> 2.1", override: true}
+      {:quantum, ">= 2.1.3"},
+      {:timex, "~> 3.0"},
+      {:mailgun, "~> 0.1.2"},
+      {:poison, "~> 2.1", override: true},
+      {:navigation_history, "~> 0.0"}
     ]
   end
 

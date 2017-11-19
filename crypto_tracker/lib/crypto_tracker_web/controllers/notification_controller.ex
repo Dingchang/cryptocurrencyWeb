@@ -59,6 +59,6 @@ defmodule CryptoTrackerWeb.NotificationController do
 
     conn
     |> put_flash(:info, "Notification deleted successfully.")
-    |> redirect(to: notification_path(conn, :index))
+    |> redirect(to: NavigationHistory.last_path(conn, default: currency_path(conn, :index)))
   end
 end
