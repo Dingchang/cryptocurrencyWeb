@@ -12,20 +12,22 @@
       <%= error_tag f, :currency %>
     </div>
 
-    Send me email when the price goes &nbsp;
+    Send me an email when the price goes &nbsp;
 
     <div class="form-group">
       <%= label f, :above, class: "control-label" %>
       <%= checkbox f, :above, class: "checkbox" %>
       <%= error_tag f, :above %>
     </div>
+    &nbsp;
 
     <div class="form-group">
       <%= label f, :threshold, class: "control-label" %>
+      &nbsp;
       <%= number_input f, :threshold, step: "any", class: "form-control" %>
       <%= error_tag f, :threshold %>
     </div>
-
+    &nbsp;
     <div class="form-group">
       <%= submit "Create", class: "btn btn-primary mr-auto" %>
     </div>
