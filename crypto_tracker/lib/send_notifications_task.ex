@@ -20,14 +20,14 @@ defmodule CryptoTracker.SendNotificationsTask do
       cond do
         (notif.above and above_threshold) ->
           IO.puts("Here, we should be sending an email to user_id #{user_id} because #{currency}'s price: #{curr_price} has gone above #{threshold}")
-	  CryptoTracker.Mailer.send_alert_email("yang.din@husky.neu.edu", "Here, we should be sending an email to user_id #{user_id} because #{currency}'s price: #{curr_price} has gone above #{threshold}")          
-	CryptoTracker.Track.delete_notification(notif)
+          CryptoTracker.Mailer.send_alert_email(user.email, "#{currency}'s current price: $#{curr_price} has gone above your threshold: $#{threshold}!")
+          CryptoTracker.Track.delete_notification(notif)
 
         (not notif.above and not above_threshold) ->
           IO.puts("Here, we should be sending an email to user_id #{user_id} because #{currency}'s price: #{curr_price} has gone below #{threshold}")
-          CryptoTracker.Mailer.send_alert_email("yang.din@husky.neu.edu", "Here, we should be sending an email to user_id #{user_id} because #{currency}'s price: #{curr_price} has gone below #{threshold}") 
-	  CryptoTracker.Track.delete_notification(notif)
-        
+          CryptoTracker.Mailer.send_alert_email(user.email, "#{currency}'s current price: $#{curr_price} has gone below your threshold: $#{threshold}!")
+          CryptoTracker.Track.delete_notification(notif)
+
         true -> nil
       end
 
