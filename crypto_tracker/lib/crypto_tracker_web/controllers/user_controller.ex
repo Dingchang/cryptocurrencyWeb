@@ -31,7 +31,8 @@ defmodule CryptoTrackerWeb.UserController do
     btc_notifs = Track.get_notifs_for_user_currency(id, "BTC")
     ltc_notifs = Track.get_notifs_for_user_currency(id, "LTC")
     eth_notifs = Track.get_notifs_for_user_currency(id, "ETH")
-    render(conn, "show.html", user: user, btc_notifications: btc_notifs, ltc_notifications: ltc_notifs, eth_notifications: eth_notifs)
+    changeset = Track.change_notification(%Track.Notification{})
+    render(conn, "show.html", user: user, changeset: changeset, btc_notifications: btc_notifs, ltc_notifications: ltc_notifs, eth_notifications: eth_notifs)
   end
 
   def edit(conn, %{"id" => id}) do
