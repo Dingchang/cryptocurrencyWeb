@@ -49,7 +49,7 @@
   <%= if @current_user do %>
     <div class="card-footer">
       <div>
-        <a data-toggle="collapse" href="#btcNote"><b>Notifications</b></a>
+        <a data-toggle="collapse" href="#btcNote" class="btn btn-info"><b>Notifications</b></a>
       </div>
     </div>
 
@@ -116,7 +116,7 @@
   <%= if @current_user do %>
     <div class="card-footer">
       <div>
-        <a data-toggle="collapse" href="#ethNote"><b>Notifications</b></a>
+        <a data-toggle="collapse" href="#ethNote" class="btn btn-info"><b>Notifications</b></a>
       </div>
     </div>
 
@@ -183,7 +183,7 @@
   <%= if @current_user do %>
     <div class="card-footer">
       <div>
-        <a data-toggle="collapse" href="#ltcNote"><b>Notifications</b></a>
+        <a data-toggle="collapse" href="#ltcNote" class="btn btn-info"><b>Notifications</b></a>
       </div>
     </div>
 
