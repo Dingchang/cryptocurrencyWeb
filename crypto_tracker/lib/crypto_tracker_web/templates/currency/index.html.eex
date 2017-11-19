@@ -1,7 +1,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+<style>
+  .loader {
+      margin-top: 50px;
+  }
+</style>
 <!-- BTC CHART -->
 <div class="card">
   <div class="card-header">
@@ -19,14 +23,13 @@
   </div>
 
   <div class="tab-content">
-    <div id="BTC-1M" class="card-body">
-      <canvas id="BTCChart" style="display:none"></canvas>
-      <div class="loader inner" id="btcLoader" align="center"></div>
-    </div>
-  </div>
+    <div class="loader inner" id="btcLoader" align="center"></div>
 
-  <div class="tab-content">
-    <div id="BTC-1Y" class="card-body">
+    <div id="BTC-1M" class="card-body tab-pane fade in active show">
+      <canvas id="BTCChart" style="display:none"></canvas>
+    </div>
+
+    <div id="BTC-1Y" class="card-body tab-pane fade">
       <canvas id="BTCChart_yearly" style="display:none"></canvas>
     </div>
   </div>
@@ -67,26 +70,25 @@
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
       <li class="mt-2 ml-2">
-        <h5 class="card-title">EThereum</h5>
+        <h5 class="card-title">Ethereum</h5>
       </li>
       <li class="nav-item ml-auto mt-1">
         <a class="nav-link active small" data-toggle="pill" href="#ETH-1M">1M</a>
       </li>
       <li class="nav-item mt-1">
-        <a class="nav-link disabled small" data-toggle="pill" href="#ETH-1Y">1Y</a>
+        <a class="nav-link small" data-toggle="pill" href="#ETH-1Y">1Y</a>
       </li>
     </ul>
   </div>
 
   <div class="tab-content">
-    <div id="ETH-1M" class="card-body">
-      <canvas id="ETHChart" style="display:none"></canvas>
-      <div class="loader inner" id="ethLoader" align="center"></div>
-    </div>
-  </div>
+    <div class="loader inner" id="ethLoader" align="center"></div>
 
-  <div class="tab-content">
-    <div id="ETH-1Y" class="card-body">
+    <div id="ETH-1M" class="card-body tab-pane fade in active show">
+      <canvas id="ETHChart" style="display:none"></canvas>
+    </div>
+
+    <div id="ETH-1Y" class="card-body tab-pane fade">
       <canvas id="ETHChart_yearly" style="display:none"></canvas>
     </div>
   </div>
@@ -133,20 +135,19 @@
         <a class="nav-link active small" data-toggle="pill" href="#LTC-1M">1M</a>
       </li>
       <li class="nav-item mt-1">
-        <a class="nav-link disabled small" data-toggle="pill" href="#LTC-1Y">1Y</a>
+        <a class="nav-link small" data-toggle="pill" href="#LTC-1Y">1Y</a>
       </li>
     </ul>
   </div>
 
   <div class="tab-content">
-    <div id="LTC-1M" class="card-body">
-      <canvas id="LTCChart" style="display:none"></canvas>
-      <div class="loader inner" id="ltcLoader" align="center"></div>
-    </div>
-  </div>
+    <div class="loader inner" id="ltcLoader" align="center"></div>
 
-  <div class="tab-content">
-    <div id="LTC-1Y" class="card-body">
+    <div id="LTC-1M" class="card-body tab-pane fade in active show">
+      <canvas id="LTCChart" style="display:none"></canvas>
+    </div>
+
+    <div id="LTC-1Y" class="card-body tab-pane fade">
       <canvas id="LTCChart_yearly" style="display:none"></canvas>
     </div>
   </div>
@@ -181,3 +182,4 @@
     </div>
   <% end %>
 </div>
+
