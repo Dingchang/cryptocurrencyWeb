@@ -35,6 +35,23 @@ $(function() {
 
 });
 
+$('.hidden').removeClass('hidden').hide();
+$('.toggle-text').click(function() {
+    $(this).find('span').each(function() { $(this).toggle(); });
+});
+
+$("#btc-card-button").click(function() {
+  $(this).toggleClass('btn-danger btn-success');
+});
+
+$("#ltc-card-button").click(function() {
+  $(this).toggleClass('btn-danger btn-success');
+});
+
+$("#eth-card-button").click(function() {
+  $(this).toggleClass('btn-danger btn-success');
+});
+
 function create_sockets() {
   var btc_chan = socket.channel("prices:btc");
   btc_chan.join()
