@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="icon" href="https://themerkle.com/wp-content/uploads/2017/02/bytecoin-logo-300x300.png">
     <title>CryptoTracker!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
