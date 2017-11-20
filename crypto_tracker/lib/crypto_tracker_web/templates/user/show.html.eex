@@ -1,17 +1,24 @@
-
-<div class="d-flex justify-content-between">
+<div>
   <div>
-    <h2>My Account</h2>
-  </div>
-
-  <div class="mt-2">
-      <%= link "Edit profile", to: user_path(@conn, :edit, @user), class: "btn btn-primary btn-sm" %>
+    <!--<h2>My Account</h2>-->
+    <div class="profile-header-container">   
+        <div class="profile-header-img">
+                <img class="rounded-circle" src="http://www.hanoverfire.org/wp-content/uploads/2015/02/image-pending.png" />
+                <!-- badge -->
+                <div class="rank-label-container mt-2">
+                    <span class="label label-default rank-label"><%= @user.email %></span>
+                </div>
+                <div class="rank-label-container mt-2">
+                    <%= link "Edit profile", to: user_path(@conn, :edit, @user), class: "btn btn-success label label-default rank-label" %>
+                </div>
+            </div>
+    </div> 
   </div>
 </div>
 
-<div class="card my-2">
+<div class="card">
   <div class="card-header">
-    <h5>Bitcoin</h5>
+    <h5>My Bitcoin Notifications</h5>
   </div>
 
   <ul class="list-group list-group-flush">
@@ -19,27 +26,30 @@
       <%= for notif <- @btc_notifications do %>
         <%= if notif.above do %>
           <li class="list-group-item">
-            Send me email when the price goes <b>above $ <%= notif.threshold %></b>.
+            Send me an email when the price goes <b>above $<%= notif.threshold %></b>.
             <%= link "Delete", to: notification_path(@conn, :delete, notif), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-sm float-right" %>
           </li>
         <% else %>
           <li class="list-group-item">
-            Send me email when the price goes <b>below $ <%= notif.threshold %></b>.
+            Send me an email when the price goes <b>below $<%= notif.threshold %></b>.
             <%= link "Delete", to: notification_path(@conn, :delete, notif), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-sm float-right" %>
           </li>
         <% end %>
       <% end %>
     <% else %>
       <li class="list-group-item">
-        No notification found.
+        No notifications found.
       </li>
     <% end %>
+    <li class="list-group-item">
+      <%= render "btc_notif_form.html", Map.put(assigns, :action, notification_path(@conn, :create)) %>
+    </li>
   </ul>
 </div>
 
 <div class="card my-4">
   <div class="card-header">
-    <h5>Ethereum</h5>
+    <h5>My Ethereum Notifications</h5>
   </div>
 
   <ul class="list-group list-group-flush">
@@ -47,27 +57,30 @@
       <%= for notif <- @eth_notifications do %>
         <%= if notif.above do %>
           <li class="list-group-item">
-            Send me email when the price goes <b>above $ <%= notif.threshold %></b>.
+            Send me an email when the price goes <b>above $<%= notif.threshold %></b>.
             <%= link "Delete", to: notification_path(@conn, :delete, notif), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-sm float-right" %>
           </li>
         <% else %>
           <li class="list-group-item">
-            Send me email when the price goes <b>below $ <%= notif.threshold %></b>.
+            Send me an email when the price goes <b>below $<%= notif.threshold %></b>.
             <%= link "Delete", to: notification_path(@conn, :delete, notif), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-sm float-right" %>
           </li>
         <% end %>
       <% end %>
     <% else %>
       <li class="list-group-item">
-        No notification found.
+        No notifications found.
       </li>
     <% end %>
+    <li class="list-group-item">
+      <%= render "eth_notif_form.html", Map.put(assigns, :action, notification_path(@conn, :create)) %>
+    </li>
   </ul>
 </div>
 
 <div class="card my-4">
   <div class="card-header">
-    <h5>Lightcoin</h5>
+    <h5>My Litecoin Notifications</h5>
   </div>
 
   <ul class="list-group list-group-flush">
@@ -75,20 +88,23 @@
       <%= for notif <- @ltc_notifications do %>
         <%= if notif.above do %>
           <li class="list-group-item">
-            Send me email when the price goes <b>above $ <%= notif.threshold %></b>.
+            Send me an email when the price goes <b>above $<%= notif.threshold %></b>.
             <%= link "Delete", to: notification_path(@conn, :delete, notif), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-sm float-right" %>
           </li>
         <% else %>
           <li class="list-group-item">
-            Send me email when the price goes <b>below $ <%= notif.threshold %></b>.
+            Send me an email when the price goes <b>below $<%= notif.threshold %></b>.
             <%= link "Delete", to: notification_path(@conn, :delete, notif), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-sm float-right" %>
           </li>
         <% end %>
       <% end %>
     <% else %>
       <li class="list-group-item">
-        No notification found.
+        No notifications found.
       </li>
     <% end %>
+    <li class="list-group-item">
+      <%= render "ltc_notif_form.html", Map.put(assigns, :action, notification_path(@conn, :create)) %>
+    </li>
   </ul>
 </div>
