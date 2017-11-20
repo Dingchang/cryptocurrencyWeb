@@ -18,7 +18,7 @@
 
       <%= if @current_user do %>
           <div class="ml-auto">
-            <button class="btn btn-info btn-block mb-1" href=<%= user_path(@conn, :show, @current_user) %> ><span class="fa fa-user"></span> View Profile </button>
+            <a class="btn btn-info btn-block mb-1" href=<%= user_path(@conn, :show, @current_user) %> ><span class="fa fa-user"></span> View Profile </a>
             <%= link("Logout", to: session_path(@conn, :logout), method: :delete, class: "btn btn-danger") %>
           </div>
       <% else %>
