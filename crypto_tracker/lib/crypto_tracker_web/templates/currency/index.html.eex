@@ -26,7 +26,7 @@
       </li>
       <li class="nav-item mt-1">
         <button type="button" class="btn btn-danger toggle-text left-space" id="btc-card-button" data-toggle="collapse" data-target="#BTCCard" aria-controls="BTCCard">
-          <span>Hide</span><span class="hidden">Show</span> BTC
+          <span>Hide</span><span class="hidden">Show</span>
         </button>
       </li>
     </ul>
@@ -93,7 +93,7 @@
 
       <li class="nav-item mt-1">
         <button type="button" class="btn btn-danger toggle-text left-space" id="eth-card-button" data-toggle="collapse" data-target="#ETHCard" aria-controls="ETHCard">
-          <span>Hide</span><span class="hidden">Show</span> ETH
+          <span>Hide</span><span class="hidden">Show</span>
         </button>
       </li>
     </ul>
@@ -160,7 +160,7 @@
 
       <li class="nav-item mt-1">
         <button type="button" class="btn btn-danger toggle-text left-space" id="ltc-card-button" data-toggle="collapse" data-target="#LTCCard" aria-controls="LTCCard">
-          <span>Hide</span><span class="hidden">Show</span> LTC
+          <span>Hide</span><span class="hidden">Show</span>
         </button>
       </li>
     </ul>
