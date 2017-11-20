@@ -7,32 +7,30 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello CryptoTracker!</title>
+    <title>CryptoTracker!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
   </head>
 
   <body>
     <nav class="navbar navbar-dark bg-dark navbar-expand-md" role="navigation">
       <%= link "CryptoTracker", to: currency_path(@conn, :index), class: "navbar-brand" %>
 
-      <div class="collapse navbar-collapse" id="main-navbar">
-      </div>
-
       <%= if @current_user do %>
-        <span class="text-light">
-          <%= link @current_user.email, to: user_path(@conn, :show, @current_user) %> |
-          <%= link("logout", to: session_path(@conn, :logout), method: :delete) %>
-        </span>
+          <div class="ml-auto">
+            <button class="btn btn-info btn-block mb-1" href=<%= user_path(@conn, :show, @current_user) %> ><span class="fa fa-user"></span> View Profile </button>
+            <%= link("Logout", to: session_path(@conn, :logout), method: :delete, class: "btn btn-danger") %>
+          </div>
       <% else %>
         <%= form_for @conn, session_path(@conn, :login),
               [as: "user", class: "form-inline w-100"], fn f -> %>
-          <div class="input-group">
+          <div class="input-group ml-auto">
             <input type="text" placeholder="email"
                                class="form-control" name="email">
             <input type="password" placeholder="password"
                                class="form-control" name="password">
-            <input type="submit" value="Log in" class="btn btn-primary">
-            <%= link "Sign Up", to: user_path(@conn, :new), class: "nav-link" %>
+            <input class="ml-1 btn btn-primary" type="submit" value="Log in">
+            <%= link "Sign Up", to: user_path(@conn, :new), class: "nav-link btn btn-success ml-1" %>
           </div>
         <% end %>
       <% end %>
